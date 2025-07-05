@@ -231,6 +231,9 @@ AppSettingsPage({
       case 'response_style':
         this.state.data[0].pages[pindex].rows[rindex].buttons[bindex].request.response_style = val;
         break;
+      case 'trim_response':
+        this.state.data[0].pages[pindex].rows[rindex].buttons[bindex].request.trim_response = val;
+        break;
     }
     this.setItem()
   },
