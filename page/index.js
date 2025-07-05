@@ -27,6 +27,16 @@ function searchJSON(obj, key) {
   return results;
 }
 
+function trimJsonString(str) {
+  // Remove wrapping quotes if present
+  if (typeof str === 'string') {
+    str = str.replace(/^"+|"+$/g, ''); // remove leading/trailing quotes
+    str = str.replace(/\\n/g, ' ');    // replace literal \n with space
+    str = str.replace(/\n/g, ' ');     // replace newlines with space
+  }
+  return str;
+}
+
 Page(
   BasePage({
     state: {
@@ -129,6 +139,11 @@ Page(
             txtToReturn = JSON.stringify(result.body);
           }
 
+          //Implementing trim functionality
+          if (request.trim_response) {
+            txtToReturn = trimJsonString(txtToReturn);
+          }
+          
           layout.notifyResult(txtToReturn, pageid, false, request.response_style)
 
         })
