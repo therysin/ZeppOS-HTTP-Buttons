@@ -813,6 +813,18 @@ AppSettingsPage({
                             this.editButton('spacer', value, pindex, rindex, bindex)
                           }
                         }),
+                        Toggle({
+                          label: 'trim response',
+                          value: button.request.trim_response || false,
+                          //style: { fontSize: '10px' },
+                          subStyle: {
+                            color: '#333',
+                            fontSize: '10px'
+                          },
+                          onChange: (value) => {
+                            this.editButton('trim_response', value, pindex, rindex, bindex)
+                          }
+                        }),
                         Select({
                           title: gettext('w'),
                           label: button.w,
